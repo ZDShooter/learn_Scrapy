@@ -13,8 +13,8 @@ class InfoSpiderSpider(scrapy.Spider):
         # 获取所有省会地址
         res_url_list = response.xpath("//div[@class='ht']/b/a/@href").extract()
         # 返回所有的省级url，用parse1回调
-        for per in res_url_list:
-            full_url = self.base_url + str(per)
+        for each_url in res_url_list:
+            full_url = self.base_url + str(each_url)
             yield scrapy.Request(full_url, callback=self.parse_province)
 
     def parse_province(self, response):
@@ -25,8 +25,8 @@ class InfoSpiderSpider(scrapy.Spider):
         area_name = response.xpath("//div[@class='ht']/span[@class='title1']/a/strong/text()").extract()[0]
         area_profile = response.xpath("//td[@valign='top']/text()").extract()
         # 循环返回下级url地址
-        for j in next_url_list:
-            url_ = j.xpath("./@href").extract()[0]
+        for each_url in next_url_list:
+            url_ = each_url.xpath("./@href").extract()[0]
             next_url = self.base_url + str(url_)
             yield scrapy.Request(next_url, callback=self.parse_next)
         # 定义Item字段
@@ -48,9 +48,9 @@ class InfoSpiderSpider(scrapy.Spider):
         area_name = response.xpath("//tr/td/text()")[0].extract()
         area_profile = response.xpath("//*[@id='page_left']/div[6]/text()").extract()
         # 判断是否位街道和乡镇以上行政区域以及是否存在下级行政区域
-        if (len(area_code) < 9) and (len(next_url_list) != 0):
-            for per in next_url_list:
-                next_url = self.base_url + str(per.xpath("./@href").extract()[0])
+        if (len(area_code) < 9) and next_url_list:
+            for each_url in next_url_list:
+                next_url = self.base_url + str(each_url.xpath("./@href").extract()[0])
                 yield scrapy.Request(next_url, callback=self.parse_next)
         else:
             pass
