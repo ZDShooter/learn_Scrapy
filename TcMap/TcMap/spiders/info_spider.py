@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from TcMap.items import TcmapItem
+from TcMap.items import TcMapItem
 
 
 class InfoSpiderSpider(scrapy.Spider):
@@ -30,7 +30,7 @@ class InfoSpiderSpider(scrapy.Spider):
             next_url = self.base_url + str(url_)
             yield scrapy.Request(next_url, callback=self.parse_next)
         # 定义Item字段
-        item = TcmapItem()
+        item = TcMapItem()
         # 获取省会代码
         item["fileCode"] = area_code[1:4]
         # 获取文件名
@@ -55,7 +55,7 @@ class InfoSpiderSpider(scrapy.Spider):
         else:
             pass
         # 定义Item字段
-        item = TcmapItem()
+        item = TcMapItem()
         # 获取区域代码
         item["fileCode"] = area_code[1:]
         # 获取地域名称

@@ -8,7 +8,7 @@
 import scrapy
 
 
-class TcmapItem(scrapy.Item):
+class TcMapItem(scrapy.Item):
     # define the fields for your item here like:
     # 文件名
     fileName = scrapy.Field()

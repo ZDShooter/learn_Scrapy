@@ -48,13 +48,13 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'TcMap.middlewares.TcmapSpiderMiddleware': 543,
+#    'TcMap.middlewares.TcMapSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
-#    'TcMap.middlewares.TcmapDownloaderMiddleware': None,
+#    'TcMap.middlewares.TcMapDownloaderMiddleware': None,
 # }
 
 # Enable or disable extensions
@@ -66,7 +66,7 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'TcMap.pipelines.TcmapPipeline': 100,
+   'TcMap.pipelines.TcMapPipeline': 100,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

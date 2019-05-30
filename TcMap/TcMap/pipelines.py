@@ -6,7 +6,7 @@
 from traceback import print_tb
 
 
-class TcmapPipeline(object):
+class TcMapPipeline(object):
     def process_item(self, item, spider):
         # 转换为字典格式
         items = dict(item)
@@ -15,7 +15,7 @@ class TcmapPipeline(object):
         area_name = items['fileName']
         area_profile = tuple(items['fileContent'])
         # 创建文件
-        my_file = open('Files/%s_%s.txt' % (area_code, area_name), 'w')
+        my_file = open('Files1/%s_%s.txt' % (area_code, area_name), 'w')
         # 处理文本信息格式,将文本出路过程的错误记录到log.txt.
         # 由于爬去数据不规整,如果使用str.join()函数,会导致格式不整齐.
         try:
